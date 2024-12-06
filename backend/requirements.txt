@@ -1,0 +1,7 @@
+Flask
+Flask-JWT-Extended
+pymongo
+flask-bcrypt
+flask-cors
+WTForms
+email-validator
