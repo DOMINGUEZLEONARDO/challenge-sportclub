@@ -1,6 +1,6 @@
 # SportClub API
 
-Esta es una aplicación web para gestionar usuarios en un club deportivo. Permite a los usuarios registrarse, iniciar sesión y actualizar su perfil. La aplicación está construida con React en el frontend y Flask en el backend.
+Esta es una aplicación web para gestionar usuarios. Permite a los usuarios registrarse, iniciar sesión y actualizar su perfil. La aplicación está construida con React en el frontend y Python en el backend.
 
 ## Tabla de Contenidos
 
@@ -38,6 +38,7 @@ Esta es una aplicación web para gestionar usuarios en un club deportivo. Permit
 
 ### Clonar el Repositorio
 
+https://github.com/DOMINGUEZLEONARDO/challenge-sportclub
 
 
 
