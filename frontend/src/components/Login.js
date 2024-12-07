@@ -25,9 +25,9 @@ const Login = () => {
       console.log(data);
       localStorage.setItem("token", data.token);
       setSuccess("Inicio de sesión exitoso");
-    setTimeout(() => {
-       navigate('/profile') 
-    }, 2000);
+      setTimeout(() => {
+      navigate('/profile') 
+    }, 1000);
     } catch (err) {
       setError("Credenciales inválidas. Inténtalo de nuevo.");
     }

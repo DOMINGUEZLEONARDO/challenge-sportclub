@@ -38,7 +38,7 @@ const Register = () => {
       setError("");
       setTimeout(() => {
         navigate("/login");
-      }, 2000);
+      }, 1000);
     } catch (err) {
       if (err.response && err.response.data) {
         if (err.response.data.details && err.response.data.details.email) {

@@ -10,7 +10,6 @@ def app():
         "MONGO_URI": "mongodb://testdb:27017/test_db"
     })
     
-    # Usar MongoMock en lugar de MongoDB real
     app.db = MongoClient()['test_db']
     
     return app

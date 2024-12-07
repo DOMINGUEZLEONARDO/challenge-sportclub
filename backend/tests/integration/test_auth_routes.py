@@ -38,7 +38,6 @@ def test_login_success(client):
         "password": "TestPass123!"
     })
     
-    # Intentar login
     response = client.post('/api/auth/login', json={
         "email": "user@gmail.com",
         "password": "TestPass123!"
@@ -55,11 +54,10 @@ def test_profile_access(client, app):
         "password": "TestPass123!"
     })
     
-    # Crear token manualmente
+    
     with app.app_context():
         access_token = create_access_token(identity="user@gmail.com")
-    
-    # Acceder al perfil
+        
     headers = {"Authorization": f"Bearer {access_token}"}
     response = client.get('/api/auth/profile', headers=headers)
     assert response.status_code == 200

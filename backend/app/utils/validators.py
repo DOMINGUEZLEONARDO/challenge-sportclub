@@ -16,7 +16,14 @@ def validate_password(form, field):
 
 def validate_email_domain(form, field):
     email = field.data
-    allowed_domains = ['gmail.com', 'hotmail.com', 'yahoo.com', 'outlook.com']
-    domain = email.split('@')[1] if '@' in email else ''
-    if domain not in allowed_domains:
-        raise ValidationError(f'Dominio no permitido. Use uno de: {", ".join(allowed_domains)}')
+    blacklisted_domains = ['mailinator.com', 'tempmail.com', '10minutemail.com']
+
+
+    email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if not re.match(email_regex, email):
+        raise ValidationError('Correo inválido. Ingrese un correo con formato válido.')
+
+
+    domain = email.split('@')[-1]
+    if domain in blacklisted_domains:
+        raise ValidationError(f'Dominio "{domain}" no está permitido.')

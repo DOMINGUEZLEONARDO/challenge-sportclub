@@ -1,18 +1,18 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import Register from '../Register';
-import { registerUser } from '../../services/api';
-import { MemoryRouter } from 'react-router-dom';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import Register from "../Register";
+import { registerUser } from "../../services/api";
+import { MemoryRouter } from "react-router-dom";
 
-jest.mock('../../services/api');
+jest.mock("../../services/api");
 
-describe('Register Component', () => {
+describe("Register Component", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('debería renderizar el formulario de registro', () => {
+  it("debería renderizar el formulario de registro", () => {
     render(
       <MemoryRouter>
         <Register />
@@ -27,10 +27,12 @@ describe('Register Component', () => {
     expect(passwordFields[0]).toBeInTheDocument();
 
     expect(screen.getByLabelText(/repetir contraseña/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /crear usuario/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /crear usuario/i })
+    ).toBeInTheDocument();
   });
 
-  it('debería mostrar un mensaje de error al ingresar contraseñas que no coinciden', () => {
+  it("debería mostrar un mensaje de error al ingresar contraseñas que no coinciden", () => {
     render(
       <MemoryRouter>
         <Register />
@@ -44,14 +46,16 @@ describe('Register Component', () => {
     fireEvent.change(screen.getByLabelText(/repetir contraseña/i), {
       target: { value: "differentpassword" },
     });
-    fireEvent.click(screen.getByRole('button', { name: /crear usuario/i }));
+    fireEvent.click(screen.getByRole("button", { name: /crear usuario/i }));
 
-    expect(screen.getByText(/las contraseñas no coinciden/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/las contraseñas no coinciden/i)
+    ).toBeInTheDocument();
   });
 
-  it('debería registrar al usuario y redirigir al inicio de sesión en caso de éxito', async () => {
+  it("debería registrar al usuario y redirigir al inicio de sesión en caso de éxito", async () => {
     registerUser.mockResolvedValueOnce({});
-    
+
     render(
       <MemoryRouter>
         <Register />
@@ -71,14 +75,13 @@ describe('Register Component', () => {
     fireEvent.change(screen.getByLabelText(/repetir contraseña/i), {
       target: { value: "password123" },
     });
-    fireEvent.click(screen.getByRole('button', { name: /crear usuario/i }));
-
-    // Aquí podrías verificar que la redirección se realiza correctamente
-    // Esto puede requerir un mock adicional o un spy en el método navigate
+    fireEvent.click(screen.getByRole("button", { name: /crear usuario/i }));
   });
 
-  it('debería mostrar un mensaje de error al fallar el registro', async () => {
-    registerUser.mockRejectedValueOnce({ response: { data: { error: 'Error al registrar' } } });
+  it("debería mostrar un mensaje de error al fallar el registro", async () => {
+    registerUser.mockRejectedValueOnce({
+      response: { data: { error: "Error al registrar" } },
+    });
 
     render(
       <MemoryRouter>
@@ -99,7 +102,7 @@ describe('Register Component', () => {
     fireEvent.change(screen.getByLabelText(/repetir contraseña/i), {
       target: { value: "password123" },
     });
-    fireEvent.click(screen.getByRole('button', { name: /crear usuario/i }));
+    fireEvent.click(screen.getByRole("button", { name: /crear usuario/i }));
 
     expect(await screen.findByText(/error al registrar/i)).toBeInTheDocument();
   });

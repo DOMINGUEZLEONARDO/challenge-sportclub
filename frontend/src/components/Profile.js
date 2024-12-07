@@ -51,7 +51,7 @@ const Profile = () => {
       setError("");
       setTimeout(() => {
         navigate('/login')
-      }, 1500);
+      }, 1000);
     } catch (err) {
       alert("Error al actualizar el perfil.");
     }
