@@ -1,7 +1,8 @@
 import axios from "axios";
+const url = process.env.REACT_APP_API_URL;
 
 const API = axios.create({
-  baseURL: "http://127.0.0.1:5000/api/auth",
+  baseURL: url,
 });
 
 export const registerUser = (data) => API.post("/register", data);
