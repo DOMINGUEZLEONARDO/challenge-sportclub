@@ -24,20 +24,19 @@ const Profile = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const fetchProfile = async () => {
+    try {
+      const { data } = await getProfile();
+      setProfile(data.profile);
+      setName(data.profile.name);
+    } catch (err) {
+      setError("Error al cargar el perfil.");
+    }
+  };
+
   useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const { data } = await getProfile();
-        setProfile(data.profile);
-        setName(data.profile.name);
-      } catch (err) {
-        setError("Error al cargar el perfil.");
-      }
-    };
     fetchProfile();
   }, []);
-
-  console.log(profile)
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -50,7 +49,7 @@ const Profile = () => {
       setSuccess("Perfil actualizado exitosamente.");
       setError("");
       setTimeout(() => {
-        navigate('/login')
+        navigate("/login");
       }, 1000);
     } catch (err) {
       alert("Error al actualizar el perfil.");
@@ -75,12 +74,7 @@ const Profile = () => {
             onChange={(e) => setName(e.target.value)}
             required
           />
-          <TextField            
-            fullWidth
-            margin="normal"
-            value={profile.email}
-            disabled            
-          />
+          <TextField fullWidth margin="normal" value={profile.email} disabled />
           <TextField
             label="Nueva Contraseña"
             type="password"

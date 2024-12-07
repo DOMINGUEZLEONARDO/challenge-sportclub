@@ -32,7 +32,7 @@ const Register = () => {
       return;
     }
     try {
-        setError('')
+      setError("");
       await registerUser({ name, email, password });
       setSuccess("Registro exitoso. Ahora puedes iniciar sesión.");
       setError("");
@@ -44,7 +44,10 @@ const Register = () => {
         if (err.response.data.details && err.response.data.details.email) {
           setError(err.response.data.details.email[0]);
         } else {
-          setError(err.response.data.error || "Error al registrar. Por favor, inténtalo de nuevo.");
+          setError(
+            err.response.data.error ||
+              "Error al registrar. Por favor, inténtalo de nuevo."
+          );
         }
       } else {
         setError("Error al registrar. Por favor, inténtalo de nuevo.");
@@ -52,10 +55,6 @@ const Register = () => {
       setSuccess("");
     }
   };
-  useEffect(() => {
-    
-  }, [error])
-  
 
   return (
     <Container maxWidth="sm">
