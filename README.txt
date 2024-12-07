@@ -4,14 +4,11 @@ Esta es una aplicación web para gestionar usuarios. Permite a los usuarios regi
 
 ## Tabla de Contenidos
 
-- [Características](#características)
-- [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Instalación](#instalación)
-- [Uso](#uso)
-- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Características]
+- [Tecnologías Utilizadas]
+- [Instalación]
+- [Uso]
 - [Pruebas](#pruebas)
-- [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
 
 ## Características
 
@@ -41,6 +38,7 @@ Esta es una aplicación web para gestionar usuarios. Permite a los usuarios regi
 https://github.com/DOMINGUEZLEONARDO/challenge-sportclub
 
 
+## Uso
 
 ### Configuración del Backend
 
